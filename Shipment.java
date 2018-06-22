@@ -1,6 +1,3 @@
-package shipment;
-
-
 import java.util.ArrayList;
 
 import java.util.List;
@@ -15,42 +12,36 @@ public class Shipment {
     Scanner sc = new Scanner(System.in);
     System.out.println("Enter the number of shipments: ");
     int numOfShipments = sc.nextInt();
-    
+    List<shipset> data = new ArrayList<>();
     
     for(int i=0;i<numOfShipments;i++) 
     {   
-      System.out.println("Enter the name of shipper name: ");
-      System.out.println("Enter the mode of transportation: ");
-      System.out.println("Enter the total weight: ");
-      System.out.println("Enter the arrival port: ");
-      System.out.println("Enter the departure port : ");
-      createNewShipment(sc.nextInt(),sc.nextLine(),sc.nextLine(),sc.nextDouble(),sc.nextLine(),sc.nextLine());
+        shipset ship= new shipset(); 
+        System.out.println("Enter shipment "+(i+1)+" details");
+        System.out.println("Enter the name of shipper name: ");
+        ship.setShipperName(sc.next());
+        sc.nextLine();
+        System.out.println("Enter the mode of transportation: ");
+        ship.setModeOfTransportation(sc.nextLine());
+        System.out.println("Enter the total weight: ");
+        ship.setTotalWeight(sc.nextDouble());
+        System.out.println("Enter the arrival port: ");
+        ship.setArrivalPort(sc.next());
+        sc.nextLine();
+        System.out.println("Enter the departure port : ");
+        ship.setDeparturePort(sc.nextLine());
+        ship.setId(shipset.nextShipmentId);
+        data.add(ship);
+        
        
      }
-      sc.close();
+    
+   for(shipset output: data) 
+    {
+      System.out.println(output);
+    }
+    sc.close();
    }
-  
-   public static shipset createNewShipment(int id,String shipperName,String modeOfTransportation,Double totalWeight,String arrivalPort,String departurePort) 
-   {
-     List<shipset> data = new ArrayList<>();
-     shipset ship = new shipset();
-     ship.setId(id);
-     ship.setShipperName(shipperName);
-     ship.setModeOfTransportation(modeOfTransportation);
-     ship.setTotalWeight(totalWeight);
-     ship.setArrivalPort(arrivalPort);
-     ship.setDeparturePort(departurePort);
-     data.add(ship);
-    return ship;
-    
-   
-    
-  }
-  
-  
-  
-  
- 
-
- 
 }
+
+
